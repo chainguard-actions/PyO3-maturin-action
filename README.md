@@ -1,5 +1,7 @@
 # PyO3/maturin-action
 
+GitHub Action to install and run a custom maturin command with built-in support for cross compilation
+
 Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at [https://github.com/PyO3/maturin-action](https://github.com/PyO3/maturin-action).
 
 ## Versions

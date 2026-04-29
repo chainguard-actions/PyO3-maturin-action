@@ -1,5 +1,6 @@
 {
   "owner": "PyO3",
   "name": "maturin-action",
-  "visibility": ""
+  "visibility": "internal",
+  "description": "GitHub Action to install and run a custom maturin command with built-in support for cross compilation"
 }
