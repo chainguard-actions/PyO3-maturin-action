@@ -1,0 +1,27 @@
+name: Test maturin with working-directory
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Run maturin-action with working-directory and build --help
+        id: action
+        uses: .
+        with:
+          command: build
+          args: --help
+          manylinux: 'off'
+          working-directory: tests
+
+      - name: Verify maturin is installed and ran
+        run: |
+          echo "Checking maturin is installed..."
+          if ! command -v maturin &>/dev/null; then
+            echo "FAIL: maturin not found on PATH"
+            exit 1
+          fi
+          echo "PASS: maturin ran with working-directory=tests"

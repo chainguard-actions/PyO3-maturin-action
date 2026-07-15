@@ -1,0 +1,30 @@
+name: Test specific maturin version installation
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Run maturin-action with specific version
+        id: action
+        uses: .
+        with:
+          command: build
+          args: --help
+          maturin-version: 'v1.7.0'
+          manylinux: 'off'
+
+      - name: Verify maturin version
+        run: |
+          echo "Checking maturin version..."
+          VERSION=$(maturin --version 2>&1 || true)
+          echo "actual: $VERSION"
+          if echo "$VERSION" | grep -q "1.7.0"; then
+            echo "PASS: maturin version 1.7.0 is installed"
+          else
+            echo "FAIL: expected maturin 1.7.0, got: $VERSION"
+            exit 1
+          fi
