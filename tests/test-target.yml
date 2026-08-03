@@ -1,4 +1,4 @@
-name: Test maturin rust-toolchain and rustup-components inputs
+name: Test maturin target input
 on:
   workflow_dispatch:
 jobs:
@@ -9,22 +9,21 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - name: Run maturin action with rust-toolchain and rustup-components
+      - name: Run maturin action with target input
         id: action
         uses: .
         with:
           command: completions
           args: bash
           manylinux: 'off'
-          rust-toolchain: 'stable'
-          rustup-components: 'rustfmt'
+          target: 'x86_64-unknown-linux-gnu'
 
-      - name: Verify maturin ran with rust-toolchain input
+      - name: Verify maturin ran with target input
         run: |
           echo "Checking maturin is available on PATH..."
           if ! command -v maturin &>/dev/null; then
             echo "FAIL: maturin not found on PATH after action ran"
             exit 1
           fi
-          echo "PASS: maturin ran successfully with rust-toolchain and rustup-components inputs"
+          echo "PASS: maturin ran successfully with target input"
           maturin --version

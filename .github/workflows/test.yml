@@ -352,7 +352,7 @@ jobs:
           TEST_CRATE: ${{ matrix.platform.test-crate }}
         run: |
           set -ex
-          rm "$TEST_CRATE"/rust-toolchain*
+          rm "$TEST_CRATE/rust-toolchain"*
 
           echo "[toolchain]
           channel = \"$TOOLCHAIN\"
