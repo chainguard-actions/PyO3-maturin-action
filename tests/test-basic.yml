@@ -1,0 +1,51 @@
+name: Test basic maturin build with version and args
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Create minimal Python project
+        run: |
+          mkdir -p /tmp/myproject/src
+          cat > /tmp/myproject/Cargo.toml << 'EOF'
+          [package]
+          name = "myproject"
+          version = "0.1.0"
+          edition = "2021"
+
+          [lib]
+          name = "myproject"
+          crate-type = ["cdylib"]
+
+          [dependencies]
+          pyo3 = { version = "0.20", features = ["extension-module"] }
+          EOF
+          cat > /tmp/myproject/src/lib.rs << 'EOF'
+          use pyo3::prelude::*;
+
+          #[pymodule]
+          fn myproject(_py: Python, m: &PyModule) -> PyResult<()> {
+              Ok(())
+          }
+          EOF
+          cat > /tmp/myproject/pyproject.toml << 'EOF'
+          [build-system]
+          requires = ["maturin>=1,<2"]
+          build-backend = "maturin"
+
+          [project]
+          name = "myproject"
+          version = "0.1.0"
+          EOF
+      - id: action
+        uses: .
+        with:
+          command: 'build'
+          args: '--help'
+          maturin-version: 'v1.50.1'
+          working-directory: '/tmp/myproject'
+      - name: Assert action completed
+        run: |
+          echo "PASS: action completed successfully"
