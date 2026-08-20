@@ -8,7 +8,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 | Version | Tag | Upstream commit |
 |---------|-----|-----------------|
-| v1.50.1 | [`v1.50.1`](https://github.com/chainguard-actions/PyO3-maturin-action/tree/v1.50.1) | — |
+| v1.50.1 | [`v1.50.1`](https://github.com/chainguard-actions/PyO3-maturin-action/tree/v1.50.1) | [`04ac600`](https://github.com/PyO3/maturin-action/commit/04ac600d27cdf7a9a280dadf7147097c42b757ad) |
 | v1.51.0 | [`v1.51.0`](https://github.com/chainguard-actions/PyO3-maturin-action/tree/v1.51.0) | [`e83996d`](https://github.com/PyO3/maturin-action/commit/e83996d129638aa358a18fbd1dfb82f0b0fb5d3b) |
 
 ## Privacy
