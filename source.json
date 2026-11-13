@@ -4,8 +4,13 @@
   "version": "v1.50.1",
   "commit_sha": "04ac600d27cdf7a9a280dadf7147097c42b757ad",
   "url": "https://github.com/PyO3/maturin-action",
-  "policy_sha": "d636be7e43ef829af6e853da6b3c7566db9f72fe",
+  "policy_sha": "374911c4be584df24e6da57af2d990570ef0f859",
   "test_policy_sha": "843adf9e4b8f85d0c08b27b9d0b09dd094b54702",
   "test_agent_version": "2",
-  "harden_agent_version": "2"
+  "harden_agent_version": "2",
+  "dist_artifact": {
+    "gcs_uri": "gs://patch-actions-node-artifacts/dist-artifacts/PyO3/maturin-action/v1.50.1/sha256-6aec4a1c8425439a2018299e974e2deae79ebb86d67e52f601f1e41f610dee1f.tar.gz",
+    "sha256": "6aec4a1c8425439a2018299e974e2deae79ebb86d67e52f601f1e41f610dee1f",
+    "size_bytes": 376132
+  }
 }
